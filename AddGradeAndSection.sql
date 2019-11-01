@@ -1,9 +1,10 @@
-drop procedure if exists AddSection;
+drop procedure if exists AddGradeAndSection;
 delimiter $$;
 
-create procedure AddSection(
+create procedure AddGradeAndSection(
     in strTitle varchar(100),
-    in strDetails varchar(1000),
+    in intGradeId int,
+    in intSectionId int,    
     in intCreatedById int,
     out itExists int
 )
@@ -12,19 +13,23 @@ begin
     select count(sectionId) 
     into itExists 
     from sections
-    where title = strTitle and statId = 1;
+    where gradeId = intGradeId
+        and sectionId = intSectionId
+        and statId = 1;
     
     if(itExists = 0) then
-        insert into sections(
+        insert into gradeAndSections(
             title,
-            details,
+            gradeId,
+            sectionId,            
             statId,
             createdById,
             createdOn
         )
         values(
             strTitle,
-            strDetails,
+            intGradeId,
+            intSectionId,            
             1,
             intCreatedById,
             now()

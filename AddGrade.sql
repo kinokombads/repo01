@@ -3,22 +3,31 @@ delimiter $$;
 
 create procedure AddGrade(
     in strTitle varchar(100),
+    in strDetails varchar(1000),
+    in intCreatedById int,
     out itExists int
 )
 begin
 
-    select count(GradeId) into itExists
+    select count(gradeId) 
+    into itExists 
     from grades
-    where Title = strTitle and StatId = 1;
-
+    where title = strTitle and statId = 1;
+    
     if(itExists = 0) then
         insert into grades(
-            Title,
-            StatId
+            title,
+            details,
+            statId,
+            createdById,
+            createdOn
         )
         values(
             strTitle,
-            1
+            strDetails,
+            1,
+            intCreatedById,
+            now()
         );
     end if;
 

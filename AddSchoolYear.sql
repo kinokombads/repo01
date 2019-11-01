@@ -1,7 +1,7 @@
-drop procedure if exists AddSection;
+drop procedure if exists AddSchoolYear;
 delimiter $$;
 
-create procedure AddSection(
+create procedure AddSchoolYear(
     in strTitle varchar(100),
     in strDetails varchar(1000),
     in intCreatedById int,
@@ -9,13 +9,13 @@ create procedure AddSection(
 )
 begin
 
-    select count(sectionId) 
+    select count(schoolYearId) 
     into itExists 
-    from sections
+    from schoolYears
     where title = strTitle and statId = 1;
     
     if(itExists = 0) then
-        insert into sections(
+        insert into schoolYears(
             title,
             details,
             statId,
