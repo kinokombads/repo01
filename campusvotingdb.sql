@@ -85,7 +85,7 @@ create table schoolYears(
     schoolYearId int primary key auto_increment not null,
     title varchar(100) collate utf8_general_ci not null,
     details varchar(1000) collate utf8_general_ci null,
-    active int null,
+    active boolean null,
     statId int null,
     createdById int not null,
     createdOn datetime not null,

@@ -1,25 +1,25 @@
-drop procedure if exists AddSchoolYear;
+drop procedure if exists AddCampaignGroup;
 delimiter $$;
 
-create procedure AddSchoolYear(
+create procedure AddCampaignGroup(
     in strTitle varchar(100),
     in strDetails varchar(1000),
-    in boolActive boolean,    
+    in intSchoolYearId int,    
     in intCreatedById int,
     out itExists int
 )
 begin
 
-    select count(schoolYearId) 
+    select count(campaignGroupId) 
     into itExists 
-    from schoolYears
+    from campaignGroups
     where title = strTitle and statId = 1;
     
     if(itExists = 0) then
-        insert into schoolYears(
+        insert into campaignGroups(
             title,
             details,
-            active,
+            schoolYearId,
             statId,
             createdById,
             createdOn
@@ -27,7 +27,7 @@ begin
         values(
             strTitle,
             strDetails,
-            boolActive,
+            intSchoolYearId,
             1,
             intCreatedById,
             now()

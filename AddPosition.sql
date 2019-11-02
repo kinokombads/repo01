@@ -1,25 +1,25 @@
-drop procedure if exists AddSchoolYear;
+drop procedure if exists AddPosition;
 delimiter $$;
 
-create procedure AddSchoolYear(
+create procedure AddPosition(
     in strTitle varchar(100),
     in strDetails varchar(1000),
-    in boolActive boolean,    
+    in strPositionType varchar(100),
     in intCreatedById int,
     out itExists int
 )
 begin
 
-    select count(schoolYearId) 
+    select count(positionId) 
     into itExists 
-    from schoolYears
+    from positions
     where title = strTitle and statId = 1;
     
     if(itExists = 0) then
-        insert into schoolYears(
+        insert into positions(
             title,
             details,
-            active,
+            positionType,
             statId,
             createdById,
             createdOn
@@ -27,7 +27,7 @@ begin
         values(
             strTitle,
             strDetails,
-            boolActive,
+            strPositionType,
             1,
             intCreatedById,
             now()
