@@ -117,11 +117,7 @@ create table students(
     middleName varchar(100) collate utf8_general_ci not null,
     gradeAndSectionId int null,
     currentSectionName varchar(100) collate utf8_general_ci not null,
-    statId int null,
-    createdById int not null,
-    createdOn datetime not null,
-    modifiedById int null,
-    modifiedOn datetime null
+    statId int null
 ) engine = innodb default charset = utf8;
 
 drop table if exists candidates;
