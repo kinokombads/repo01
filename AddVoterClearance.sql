@@ -1,22 +1,22 @@
-drop procedure if exists AddCandidateClearance;
+drop procedure if exists AddVoterClearance;
 delimiter $$; 
 
-create procedure AddCandidateClearance(
+create procedure AddVoterClearance(
     in intPositionId int,
     in intGradeId int,
     out itExists int
 )
 begin
 
-    select count(candidateClearanceId) 
+    select count(voterClearanceId) 
     into itExists 
-    from candidateClearances
+    from voterClearances
     where positionId = intPositionId 
     and gradeId = intGradeId
     and statId = 1;
     
     if(itExists = 0) then
-        insert into candidateClearances(
+        insert into voterClearances(
             title,
             details,
             statId,
