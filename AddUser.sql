@@ -15,7 +15,8 @@ begin
     select count(userId)
     into itExists
     from users
-    where userName = strUserName and statId = 1;
+    where userName = strUserName 
+    and statId = 1;
     
     if(itExists = 0) then
         insert into users(

@@ -13,7 +13,8 @@ begin
     select count(schoolYearId) 
     into itExists 
     from schoolYears
-    where title = strTitle and statId = 1;
+    where title = strTitle 
+    and statId = 1;
     
     if(itExists = 0) then
         insert into schoolYears(

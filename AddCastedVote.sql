@@ -11,9 +11,9 @@ begin
     select count(castedVoteId)
     into itExists
     from castedVotes
-    where studentId = intStudentId and
-        candidateId = intCandidateId and
-        statId = 1;
+    where studentId = intStudentId
+    and candidateId = intCandidateId 
+    and statId = 1;
 
     if(itExists = 0) then
         insert into castedVotes(

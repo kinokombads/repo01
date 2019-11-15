@@ -12,7 +12,8 @@ begin
     select count(sectionId) 
     into itExists 
     from sections
-    where title = strTitle and statId = 1;
+    where title = strTitle 
+    and statId = 1;
     
     if(itExists = 0) then
         insert into sections(

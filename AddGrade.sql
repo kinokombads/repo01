@@ -12,7 +12,8 @@ begin
     select count(gradeId) 
     into itExists 
     from grades
-    where title = strTitle and statId = 1;
+    where title = strTitle 
+    and statId = 1;
     
     if(itExists = 0) then
         insert into grades(

@@ -10,7 +10,7 @@ begin
     into itExists
     from votingSessions
     where schoolYearId = intSchoolYearId AddVotingSession
-        statId = 1;
+    and statId = 1;
 
     if(itExists = 0) then
         insert into votingSessions(

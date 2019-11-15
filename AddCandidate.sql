@@ -15,9 +15,9 @@ begin
     select count(candidateId)
     into itExists
     from candidates
-    where studentId = intStudentId and
-        schoolYearId = intSchoolYearId and
-        statId = 1;
+    where studentId = intStudentId
+    and schoolYearId = intSchoolYearId 
+    and statId = 1;
 
     if(itExists = 0) then
         insert into candidates(

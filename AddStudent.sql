@@ -16,7 +16,8 @@ begin
     select count(studentId) 
     into itExists 
     from students
-    where lrn = strLrn  and statId = 1;
+    where lrn = strLrn 
+    and statId = 1;
     
     if(itExists = 0) then
         insert into students(
