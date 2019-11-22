@@ -18,7 +18,7 @@ begin
 
     if(itExists = 0) then
         update voterClearances
-        set positionId = intPositionId
+        set positionId = intPositionId,
             gradeId = intGradeId
         where voterClearanceId = intVoterClearanceId;
     end if;

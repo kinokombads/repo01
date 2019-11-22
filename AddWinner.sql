@@ -8,20 +8,20 @@ create procedure AddWinner(
     in intTotalVotes int
 )
 begin    
-    if(itExists = 0) then
-        insert into winners(
-            votingSessionId,
-            schoolYearId,
-            candidateId,
-            totalVotes,
-            statId
-        )
-        values(
-            intVotingSessionId,
-            intSchoolYearId,
-            intCandidateId,
-            intTotalVotes,
-            1
-        );
-    end if;
+    
+    insert into winners(
+        votingSessionId,
+        schoolYearId,
+        candidateId,
+        totalVotes,
+        statId
+    )
+    values(
+        intVotingSessionId,
+        intSchoolYearId,
+        intCandidateId,
+        intTotalVotes,
+        1
+    );
+    
 end;

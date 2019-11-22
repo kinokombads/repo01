@@ -9,7 +9,7 @@ begin
     select count(votingSessionId)
     into itExists
     from votingSessions
-    where schoolYearId = intSchoolYearId AddVotingSession
+    where schoolYearId = intSchoolYearId
     and statId = 1;
 
     if(itExists = 0) then
