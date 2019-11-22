@@ -20,7 +20,7 @@ begin
             -- allow representative type position
     
     -- 
-
+    -- check if the same student is applying to different positions
     select count(candidateId) 
     into itExists 
     from candidates
@@ -30,12 +30,16 @@ begin
     and statId = 1;
     
     if(itExists = 0) then
-        update grades
-        set title = strTitle,
-            details = strDetails,
+        update candidates
+        set studentId = intStudentId,
+            pictureId = intPictureId,            
+            schoolYearId = intSchoolYearId,
+            positionId = intPositionId,
+            campaignGroupId = intCampaignGroupId,
+            propaganda = strPropaganda,
             modifiedById = intModifiedById,
             modifiedOn = now()
-        where gradeId = intGradeId 
+        where candidateId = intCandidateId
         and statId = 1;
     end if;
 end;
