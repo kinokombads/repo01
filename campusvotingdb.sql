@@ -113,10 +113,11 @@ create table students(
     lrn varchar(100) collate utf8_general_ci not null,
     password varchar(100) collate utf8_general_ci not null,
     lastName varchar(100) collate utf8_general_ci not null,
-    fistName varchar(100) collate utf8_general_ci not null,
+    firstName varchar(100) collate utf8_general_ci not null,
     middleName varchar(100) collate utf8_general_ci not null,
     gradeAndSectionId int null,
     currentSectionName varchar(100) collate utf8_general_ci not null,
+    schoolYearId int not null,
     statId int null
 ) engine = innodb default charset = utf8;
 
@@ -147,7 +148,7 @@ drop table if exists votingSessions;
 create table votingSessions(
     votingSessionId int primary key auto_increment not null,
     schoolYearId int not null,
-    Active int null,
+    Active tinyint null,
     statId int null    
 ) engine = innodb default charset = utf8;
 
