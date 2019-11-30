@@ -4,7 +4,7 @@ delimiter $$;
 create procedure EditVoterClearance(
     in intVoterClearanceId int,
     in intPositionId int,
-    in intGradeId int,
+    in intGradeIsd int,
     out itExists int
 )
 begin
