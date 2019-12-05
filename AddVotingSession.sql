@@ -3,6 +3,7 @@ delimiter $$;
 
 create procedure AddVotingSession(
     in intSchoolYearId int,
+    in intUserId int,
     out itExists int
 )
 begin
@@ -16,12 +17,16 @@ begin
         insert into votingSessions(
             schoolYearId,
             active,
-            statId
+            statId,
+            createdById,
+            createdOn
         )
         value(
             intSchoolYearId,
             1,
-            1
+            1,
+            intUserId,
+            now()
         );
     end if;
 end;

@@ -148,8 +148,14 @@ drop table if exists votingSessions;
 create table votingSessions(
     votingSessionId int primary key auto_increment not null,
     schoolYearId int not null,
-    Active tinyint null,
-    statId int null    
+    active tinyint null,
+    statId int null,
+    createdById int not null,
+    createdOn datetime not null,
+    startedById int not null,
+    startedOn datetime not null,
+    stoppedById int not null,
+    stoppedOn datetime not null
 ) engine = innodb default charset = utf8;
 
 drop table if exists castedVotes;

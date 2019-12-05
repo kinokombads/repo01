@@ -1,18 +1,25 @@
-drop procedure if exists ToggleActiveVotingSession;
+drop procedure if exists ActiveVotingSession;
 delimiter $$;
 
-create procedure ToggleActiveVotingSession(
-    in intVotingSessionId int,    
-    in boolActive boolean,
-    in intModifiedById int,
+create procedure ActiveVotingSession(
+    in intVotingSessionId int,
+    in intStartedById int,
     out itExists int
 )
 begin
     
-    update votingSessions
-    set active = boolActive,
-        modifiedById = intModifiedById,
-        modifiedOn = now()
-    where votingSessionId = intVotingSessionId;
+    select count(votingSessionId)
+    into itExists
+    from votingSessions
+    where active = 1;
+
+    if(itExists = 0) then
+        update votingSessions
+        set active = 1,
+            startedById = intModifiedById,
+            startedOn = now()
+        where votingSessionId = intVotingSessionId
+        and active = 0;
+    end if;
 
 end;
