@@ -1,7 +1,7 @@
-drop procedure if exists ActiveVotingSession;
+drop procedure if exists ActivateVotingSession;
 delimiter $$;
 
-create procedure ActiveVotingSession(
+create procedure ActivateVotingSession(
     in intVotingSessionId int,
     in intStartedById int,
     out itExists int
