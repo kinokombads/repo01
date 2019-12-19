@@ -2,7 +2,7 @@ drop procedure if exists GetStudents;
 delimiter $$;
 
 create procedure GetStudents(
-    in intStudentId int,
+    in intId int,
     in strLrn varchar(100),
     in strLastName varchar(100),
     in strFirstName varchar(100),
@@ -31,7 +31,7 @@ begin
         left join sections c on b.sectionId = c.sectionId
         left join grades d on b.gradeId = d.gradeId
         left join schoolyears e on a.schoolYearId = e.schoolYearId
-    where (a.studentId = intStudentId or intStudentId = 0)
+    where (a.studentId = intId or intId = 0)
     and (a.lrn like concat('%', strLrn, '%') or strLrn = '')
     and (a.lastName like concat('%', strLastName, '%') or strLastName = '')
     and (a.firstName like concat('%', strFirstName, '%') or strFirstName = '')
