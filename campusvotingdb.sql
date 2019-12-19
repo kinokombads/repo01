@@ -11,7 +11,7 @@ create table users(
     userName varchar(100) collate utf8_general_ci not null,
     password varchar(100) collate utf8_general_ci not null,
     lastName varchar(100) collate utf8_general_ci not null,
-    fistName varchar(100) collate utf8_general_ci not null,
+    firstName varchar(100) collate utf8_general_ci not null,
     middleName varchar(100) collate utf8_general_ci not null,
     userLevelId int default 0 null,
     statId int null

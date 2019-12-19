@@ -39,6 +39,5 @@ begin
     and (b.title like concat('%', strCurrentGradeAndSection, '%') or strCurrentGradeAndSection = '')
     and (c.title like concat('%', strSectionName, '%') or strSectionName = '')
     and (d.title like concat('%', strGradeName, '%') or strGradeName)
-    and statId = 1;
-    order by
+    and a.statId = 1;
 end;
