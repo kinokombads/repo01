@@ -9,7 +9,7 @@ create procedure GetStudents(
     in strMiddleName varchar(100),
     in strSectionName varchar(100),
     in strGradeName varchar(100),
-    in strCurrentGradeAndSection varchar(100)
+    in strCurrentSectionName varchar(100)
 )
 begin
     select
@@ -19,7 +19,7 @@ begin
         ifnull(a.firstName, '') as FirstName,
         ifnull(a.middleName, '') as MiddleName,
         ifnull(a.gradeAndSectionId, 0) as GradeAndSectionId,
-        ifnull(a.currentGradeAndSection, 0) as CurrentGradeAndSection,
+        ifnull(a.currentSectionName, 0) as CurrentSectionName,
         ifnull(b.sectionId, 0) as SectionId,
         ifnull(c.title, '') as SectionName,
         ifnull(b.gradeId, 0) as GradeId,
@@ -36,7 +36,7 @@ begin
     and (a.lastName like concat('%', strLastName, '%') or strLastName = '')
     and (a.firstName like concat('%', strFirstName, '%') or strFirstName = '')
     and (a.middleName like concat('%', strMiddleName, '%') or strMiddleName = '')
-    and (b.title like concat('%', strCurrentGradeAndSection, '%') or strCurrentGradeAndSection = '')
+    and (b.title like concat('%', strCurrentSectionName, '%') or strCurrentSectionName = '')
     and (c.title like concat('%', strSectionName, '%') or strSectionName = '')
     and (d.title like concat('%', strGradeName, '%') or strGradeName)
     and a.statId = 1;
