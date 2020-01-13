@@ -9,7 +9,7 @@ begin
     select 
         ifnull(a.sectionId, 0) as SectionId,
         ifnull(a.title, '') as Title,
-        ifnull(a.details, '') as Details
+        ifnull(a.details, '') as Details,
         ifnull(a.statId, 0) as StatId,
         ifnull(a.createdById, 0) as CreatedById,
         concat(b.lastname, ', ', b.firstname) as CreatedByName,
