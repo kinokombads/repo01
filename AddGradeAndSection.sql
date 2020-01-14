@@ -10,9 +10,9 @@ create procedure AddGradeAndSection(
 )
 begin
 
-    select count(sectionId) 
+    select count(gradeAndSectionId) 
     into itExists 
-    from sections
+    from gradeAndSections
     where gradeId = intGradeId
         and sectionId = intSectionId
         and statId = 1;
@@ -21,7 +21,7 @@ begin
         insert into gradeAndSections(
             title,
             gradeId,
-            sectionId,            
+            sectionId,
             statId,
             createdById,
             createdOn
@@ -29,7 +29,7 @@ begin
         values(
             strTitle,
             intGradeId,
-            intSectionId,            
+            intSectionId,
             1,
             intCreatedById,
             now()
