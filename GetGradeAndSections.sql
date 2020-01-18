@@ -2,7 +2,7 @@ drop procedure if exists GetGradeAndSections;
 delimiter $$;
 
 create procedure GetGradeAndSections(
-    in intGradeAndSectionId int,
+    in intId int,
     in strTitle varchar(100),
     in strGrade varchar(100),
     in strSection varchar(100)      
@@ -27,10 +27,10 @@ begin
         left join users c on a.modifiedById = c.userId
         left join grades d on a.gradeId = d.gradeId
         left join sections e on a.sectionId = e.sectionId
-    where (a.gradeAndSectionId = intGradeAndSectionId or intGradeAndSectionId = 0)
+    where (a.gradeAndSectionId = intId or intId = 0)
     and (a.title like concat('%', strTitle, '%') or strTitle = '')
     and (d.title like concat('%', strGrade, '%') or strGrade = '')
     and (e.title like concat('%', strSection, '%') or strSection = '')
     and a.statId = 1
-    order by a.gradeId desc, a.sectionId desc;    
+    order by a.gradeId asc, a.sectionId asc;    
 end;
