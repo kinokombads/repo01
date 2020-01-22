@@ -2,12 +2,12 @@ drop procedure if exists DeleteGrade;
 delimiter $$;
 
 create procedure DeleteGrade(
-    in intGradeId int
+    in intId int
 )
 begin
         
     update grades
     set statId = 0
-    where gradeId = intGradeId;
+    where gradeId = intId;
     
 end;

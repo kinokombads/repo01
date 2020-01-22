@@ -2,7 +2,7 @@ drop procedure if exists EditSection;
 delimiter $$;
 
 create procedure EditSection(
-    in intSectionId int,
+    in intId int,
     in strTitle varchar(100),
     in strDetails varchar(1000),
     in intModifiedById int,
@@ -12,7 +12,7 @@ begin
     select count(sectionId) 
     into itExists 
     from sections
-    where sectionId <> intSectionId and
+    where sectionId <> intId and
         title = strTitle and
         statId = 1;
     
@@ -22,7 +22,7 @@ begin
             details = strDetails,
             modifiedById = intModifiedById,
             modifiedOn = now()
-        where sectionId = intSectionId and 
+        where sectionId = intId and 
             statId = 1;
     end if;
 end;

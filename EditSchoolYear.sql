@@ -2,7 +2,7 @@ drop procedure if exists EditSchoolYear;
 delimiter $$;
 
 create procedure EditSchoolYear(
-    in intSchoolYearId int,
+    in intId int,
     in strTitle varchar(100),
     in strDetails varchar(1000),
     in boolActive boolean,
@@ -14,7 +14,7 @@ begin
     select count(schoolYearId)
     into itExists
     from schoolYears
-    where schoolYearId <> intSchoolYearId
+    where schoolYearId <> intId
     and title = strTitle
     and statId = 1;
 
@@ -25,7 +25,7 @@ begin
             active = boolActive,
             modifiedById = intModifiedById,
             modifiedOn = now()
-        where schoolYearId = intSchoolYearId;
+        where schoolYearId = intId;
     end if;
 
 end;

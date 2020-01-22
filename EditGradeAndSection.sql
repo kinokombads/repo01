@@ -2,7 +2,7 @@ drop procedure if exists EditGradeAndSection;
 delimiter $$;
 
 create procedure EditGradeAndSection(
-    in intGradeAndSectionId int,
+    in intId int,
     in strTitle varchar(100),
     in intGradeId int,
     in intSectionId int,    
@@ -16,7 +16,8 @@ begin
     from gradeAndSections
     where gradeId = intGradeId
         and sectionId = intSectionId
-        and statId = 1;
+        and statId = 1
+        and gradeAndSectionId != intId;
     
     if(itExists = 0) then
         update gradeAndSections
@@ -25,7 +26,7 @@ begin
             sectionId = intSectionId,
             modifiedById = intModifiedById,
             modifiedOn = now()
-        where (gradeAndSectionId = intGradeAndSectionId or intGradeAndSectionId = 0) and
+        where (gradeAndSectionId = intId or intId = 0) and
             statId = 1;
     end if;
 
