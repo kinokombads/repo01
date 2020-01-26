@@ -9,7 +9,7 @@ create procedure GetPositions(
 begin
     select 
         ifnull(a.positionId, 0) as PositionId,
-        ifnull(a.title, '') as Title,		
+        ifnull(a.title, '') as Title,
 		ifnull(a.positionType, '') as PositionType,
         ifnull(a.details, '') as Details,
         ifnull(a.statId, 0) as StatId,

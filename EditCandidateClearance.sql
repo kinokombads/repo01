@@ -2,7 +2,7 @@ drop procedure if exists EditCandidateClearance;
 delimiter $$;
 
 create procedure EditCandidateClearance(
-    in intCandidateClearanceId int,
+    in intId int,
     in intPositionId int,
     in intGradeId int,
     out itExists int
@@ -20,7 +20,7 @@ begin
         update candidateClearances
         set positionId = intPositionId,
             gradeId = intGradeId
-        where candidateClearanceId = intCandidateClearanceId;
+        where candidateClearanceId = intId;
     end if;
 
 end;

@@ -4,7 +4,7 @@ delimiter $$;
 create procedure AddSchoolYear(
     in strTitle varchar(100),
     in strDetails varchar(1000),
-    in boolActive boolean,    
+    in boolActive boolean,
     in intCreatedById int,
     out itExists int
 )
@@ -13,7 +13,7 @@ begin
     select count(schoolYearId) 
     into itExists 
     from schoolYears
-    where title = strTitle 
+    where title = strTitle
     and statId = 1;
        
     if(itExists = 0) then

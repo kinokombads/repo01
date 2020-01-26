@@ -2,7 +2,7 @@ drop procedure if exists GetCandidateClearances;
 delimiter $$;
 
 create procedure GetCandidateClearances(
-    in intCandidateClearanceId int,
+    in intId int,
     in strPosition varchar(100),
     in strGrade varchar(100)
 )
@@ -17,7 +17,7 @@ begin
     from candidateclearances a
         left join positions b on a.positionId = b.positionId
         left join grades c on a.GradeId = c.gradeId
-    where (a.candidateClearanceId = intCandidateClearanceId or intCandidateClearanceId = 0)
+    where (a.candidateClearanceId = intId or intId = 0)
     and (b.title like concat('%', strPosition, '%') or strPosition = '')
     and (c.title like concat('%', strGrade, '%') or strGrade = '')
     and a.statId = 1;

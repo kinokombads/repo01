@@ -4,7 +4,7 @@ delimiter $$;
 create procedure AddGradeAndSection(
     in strTitle varchar(100),
     in intGradeId int,
-    in intSectionId int,    
+    in intSectionId int,
     in intCreatedById int,
     out itExists int
 )
