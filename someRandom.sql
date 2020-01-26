@@ -8,3 +8,8 @@ SELECT @itExists AS cnt;
 
 SET @oo = 0;
 CALL addgrade('grade 7','adskahhf', 1, @oo);
+
+SET @oo = 0;
+CALL addschoolyear('2003-2004', 'year 2003', 1, 1, @oo);
+
+CALL getschoolyears(0, '', 1);

@@ -2,7 +2,7 @@ drop procedure if exists EditPosition;
 delimiter $$;
 
 create procedure EditPosition(
-    in intPositionId int,
+    in intId int,
     in strTitle varchar(100),
     in strDetails varchar(1000),
     in strPositionType varchar(100),
@@ -14,7 +14,7 @@ begin
     select count(positionId)
     into itExists
     from positions
-    where positionId <> intPositionId
+    where positionId <> intId
     and title = strTitle
     and statId = 1;
 
@@ -25,7 +25,7 @@ begin
             positionType = strPositionType,
             modifiedById = intModifiedById,
             modifiedOn = now()
-        where positionId = intPositionId;
+        where positionId = intId;
     end if;
 
 end;

@@ -19,6 +19,15 @@ begin
     and statId = 1;
 
     if(itExists = 0) then
+
+        if(boolActive = 1) then
+            update schoolYears 
+            set active = 0
+            where active = 1
+            and schoolYearId <> intId
+            and statId = 1;
+        end if;
+
         update schoolYears
         set title = strTitle,
             details = strDetails,
