@@ -4,7 +4,7 @@ delimiter $$;
 create procedure GetSchoolYears(
     in intId int,
     in strTitle varchar(100),
-    in intActive tinyint
+    in boolActive boolean
 
 )
 begin
@@ -25,7 +25,7 @@ begin
         left join users c on a.modifiedById = c.userId
     where (a.schoolYearId = intId or intId = 0)
     and (a.title like concat('%', strTitle, '%') or strTitle = '')
-    and (a.active = intActive or intActive = 0)
+    and (a.active = boolActive or boolActive = 0)
     and a.statId = 1
     order by a.title;
 end;
