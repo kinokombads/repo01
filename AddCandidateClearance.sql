@@ -12,24 +12,18 @@ begin
     into itExists 
     from candidateClearances
     where positionId = intPositionId 
-    and gradeId = intGradeId
-    and statId = 1;
+    and gradeId = intGradeId;
     
     if(itExists = 0) then
         insert into candidateClearances(
-            title,
-            details,
-            statId,
-            createdById,
-            createdOn
+            positionId,
+            gradeId
         )
         values(
-            strTitle,
-            strDetails,
-            1,
-            intCreatedById,
-            now()
+            intPositionId,
+            intGradeId
         );
+
     end if;
 
 end;
