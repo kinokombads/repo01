@@ -6,8 +6,7 @@ create procedure DeleteCandidateClearance(
 )
 begin
         
-    update candidateClearances
-    set statId = 0
+    delete from candidateClearances    
     where candidateClearanceId = intId;
     
 end;
