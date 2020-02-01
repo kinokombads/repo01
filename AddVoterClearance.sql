@@ -4,6 +4,7 @@ delimiter $$;
 create procedure AddVoterClearance(
     in intPositionId int,
     in intGradeId int,
+    in boolActive boolean,
     out itExists int
 )
 begin
@@ -12,24 +13,20 @@ begin
     into itExists 
     from voterClearances
     where positionId = intPositionId 
-    and gradeId = intGradeId
-    and statId = 1;
+    and gradeId = intGradeId;
     
     if(itExists = 0) then
         insert into voterClearances(
-            title,
-            details,
-            statId,
-            createdById,
-            createdOn
+            positionId,
+            gradeId,
+            active
         )
         values(
-            strTitle,
-            strDetails,
-            1,
-            intCreatedById,
-            now()
+            intPositionId,
+            intGradeId,
+            boolActive
         );
+
     end if;
 
 end;

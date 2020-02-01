@@ -4,6 +4,7 @@ delimiter $$;
 create procedure AddCandidateClearance(
     in intPositionId int,
     in intGradeId int,
+    in boolActive boolean,
     out itExists int
 )
 begin
@@ -17,11 +18,13 @@ begin
     if(itExists = 0) then
         insert into candidateClearances(
             positionId,
-            gradeId
+            gradeId,
+            active
         )
         values(
             intPositionId,
-            intGradeId
+            intGradeId,
+            boolActive
         );
 
     end if;

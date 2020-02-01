@@ -97,14 +97,16 @@ drop table if exists candidateClearances;
 create table candidateClearances(
     candidateClearanceId int primary key auto_increment not null,
     positionId int,
-    gradeId int
+    gradeId int,
+    active boolean
 ) engine = innodb default charset = utf8;
 
 drop table if exists voterClearances;
 create table voterClearances(
     voterClearanceId int primary key auto_increment not null,
     positionId int,
-    gradeId int
+    gradeId int,
+    active boolean
 ) engine = innodb default charset = utf8;
 
 drop table if exists students;

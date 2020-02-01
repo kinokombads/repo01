@@ -11,9 +11,10 @@ begin
     select
         ifnull(a.candidateClearanceId, 0) as CandidateClearanceId,
         ifnull(a.positionId, 0) as PositionId,
-        ifnull(b.title, '') as PositionName,
+        ifnull(b.title, '') as PositionName,        
         ifnull(a.gradeId, 0) as GradeId,
-        ifnull(c.title, '') as GradeName
+        ifnull(c.title, '') as GradeName,
+        ifnull(a.Active, 0) as Active
     from candidateclearances a
         left join positions b on a.positionId = b.positionId
         left join grades c on a.GradeId = c.gradeId

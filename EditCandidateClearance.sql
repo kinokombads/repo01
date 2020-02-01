@@ -2,9 +2,9 @@ drop procedure if exists EditCandidateClearance;
 delimiter $$;
 
 create procedure EditCandidateClearance(
-    in intId int,
     in intPositionId int,
-    in intGradeId int,
+    in intGradeId int,   
+    in boolActive boolean,
     out itExists int
 )
 begin
@@ -14,12 +14,11 @@ begin
     from candidateClearances
     where positionId = intPositionId
     and gradeId = intGradeId
-    and statId = 1;
-
+    and active = boolActive;
+    
     if(itExists = 0) then
         update candidateClearances
-        set positionId = intPositionId,
-            gradeId = intGradeId
+        set active = boolActive
         where candidateClearanceId = intId;
     end if;
 
