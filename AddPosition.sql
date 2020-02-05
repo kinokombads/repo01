@@ -6,7 +6,8 @@ create procedure AddPosition(
     in strDetails varchar(1000),
     in strPositionType varchar(100),
     in intCreatedById int,
-    out itExists int
+    out itExists int,
+    out intNewId int
 )
 begin
 
@@ -33,6 +34,8 @@ begin
             intCreatedById,
             now()
         );
-    end if;
 
+        set intNewId = last_insert_id();
+    end if;
+        
 end;

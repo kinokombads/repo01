@@ -19,7 +19,9 @@ begin
     if(itExists = 0) then
         update candidateClearances
         set active = boolActive
-        where candidateClearanceId = intId;
+        where positionId = intPositionId
+        and gradeId = intGradeId
+        and active = boolActive;
     end if;
 
 end;

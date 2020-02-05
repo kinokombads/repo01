@@ -1,26 +1,25 @@
-drop procedure if exists GetCandidateClearances;
-delimiter $$;
+DROP PROCEDURE IF EXISTS GetCandidateClearances;
+DELIMITER $$;
 
-create procedure GetCandidateClearances(
-    in intId int,
-    in strPosition varchar(100),
-    in strGrade varchar(100)
+CREATE PROCEDURE GetCandidateClearances(
+    IN intId INT,
+    IN strPosition VARCHAR(100),
+    IN strGrade VARCHAR(100)
 )
-begin
+BEGIN
 
-    select
-        ifnull(a.candidateClearanceId, 0) as CandidateClearanceId,
-        ifnull(a.positionId, 0) as PositionId,
-        ifnull(b.title, '') as PositionName,        
-        ifnull(a.gradeId, 0) as GradeId,
-        ifnull(c.title, '') as GradeName,
-        ifnull(a.Active, 0) as Active
-    from candidateclearances a
-        left join positions b on a.positionId = b.positionId
-        left join grades c on a.GradeId = c.gradeId
-    where (a.candidateClearanceId = intId or intId = 0)
-    and (b.title like concat('%', strPosition, '%') or strPosition = '')
-    and (c.title like concat('%', strGrade, '%') or strGrade = '')
-    and a.statId = 1;
+    SELECT
+        IFNULL(a.candidateClearanceId, 0) AS CandidateClearanceId,
+        IFNULL(a.positionId, 0) AS PositionId,
+        IFNULL(b.title, '') AS PositionName,
+        IFNULL(a.gradeId, 0) AS GradeId,
+        IFNULL(c.title, '') AS GradeName,
+        IFNULL(a.Active, 0) AS Active
+    FROM candidateclearances a
+        LEFT JOIN positions b ON a.positionId = b.positionId
+        LEFT JOIN grades c ON a.GradeId = c.gradeId
+    WHERE (a.candidateClearanceId = intId OR intId = 0)
+    AND (b.title LIKE CONCAT('%', strPosition, '%') OR strPosition = '')
+    AND (c.title LIKE CONCAT('%', strGrade, '%') OR strGrade = '');
     
-end;
+END;
