@@ -2,7 +2,7 @@ DROP PROCEDURE IF EXISTS GetCandidateClearances;
 DELIMITER $$;
 
 CREATE PROCEDURE GetCandidateClearances(
-    IN intId INT,
+    -- IN intId INT,
     IN strPosition VARCHAR(100),
     IN strGrade VARCHAR(100)
 )
@@ -18,8 +18,9 @@ BEGIN
     FROM candidateclearances a
         LEFT JOIN positions b ON a.positionId = b.positionId
         LEFT JOIN grades c ON a.GradeId = c.gradeId
-    WHERE (a.candidateClearanceId = intId OR intId = 0)
-    AND (b.title LIKE CONCAT('%', strPosition, '%') OR strPosition = '')
+    WHERE 
+    -- (a.candidateClearanceId = intId OR intId = 0) AND
+     (b.title LIKE CONCAT('%', strPosition, '%') OR strPosition = '')
     AND (c.title LIKE CONCAT('%', strGrade, '%') OR strGrade = '');
     
 END;
