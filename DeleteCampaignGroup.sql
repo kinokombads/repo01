@@ -2,12 +2,12 @@ drop procedure if exists DeleteCampaignGroup;
 delimiter $$;
 
 create procedure DeleteCampaignGroup(
-    in intCampaignGroupId int
+    in intId int
 )
 begin
         
     update campaignGroups
     set statId = 0
-    where campaignGroupId = intCampaignGroupId;
+    where campaignGroupId = intId;
     
 end;

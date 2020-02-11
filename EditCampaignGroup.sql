@@ -2,7 +2,7 @@ drop procedure if exists EditCampaignGroup;
 delimiter $$;
 
 create procedure EditCampaignGroup(
-    in intCampaignGroupId int,
+    in intId int,
     in strTitle varchar(100),
     in strDetails varchar(1000),
     in intSchoolYearId int,
@@ -13,7 +13,7 @@ begin
     select count(campaignGroupId)
     into itExists
     from campaignGroups
-    where campaignGroupId <> intCampaignGroupId 
+    where campaignGroupId <> intId 
     and title = strTitle 
     and statId = 1;
 
@@ -23,7 +23,7 @@ begin
             details = strDetails,
             schoolYearId = intSchoolYearId,
             modifiedById = intModifiedById
-        where campaignGroupId = intCampaignGroupId 
+        where campaignGroupId = intId 
         and statId = 1;
     end if;
 end;

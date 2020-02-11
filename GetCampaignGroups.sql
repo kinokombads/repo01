@@ -2,7 +2,7 @@ drop procedure if exists GetCampaignGroups;
 delimiter $$;
 
 create procedure GetCampaignGroups(
-    in intCampaignGroupId int,
+    in intId int,
     in strTitle varchar(100),
     in intSchoolYearId int
 )
@@ -13,7 +13,7 @@ begin
         ifnull(a.Details, '') as Details,
         ifnull(a.SchoolYearId, 0) as SchoolYearId,
         ifnull(b.Title, '') as SchoolYearName,
-        ifnull(a.CreateById, 0) as CreatedById,
+        ifnull(a.CreatedById, 0) as CreatedById,
         concat(c.LastName, ', ', c.FirstName) as CreatedByName,
         a.CreatedOn as CreatedOn,
         ifnull(a.ModifiedById, 0) as ModifiedById,
@@ -23,9 +23,9 @@ begin
 
     left join schoolYears b on a.SchoolYearId = b.SchoolYearId
     left join users c on a.CreatedById = c.UserId
-    left join users d on a.ModifiedById = d.UserId 
+    left join users d on a.ModifiedById = d.UserId
 
-    where (a.CampaignGroupId = intCampaignGroupId or intCampaignGroupId = 0)
+    where (a.CampaignGroupId = intId or intId = 0)
     and (a.Title like concat('%', strTitle, '%') or strLastName = '')
     and (a.SchoolYearId = intSchoolYearId or intSchoolYearId = 0)
     and a.StatId = 1;
