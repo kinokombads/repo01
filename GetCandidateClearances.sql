@@ -25,11 +25,4 @@ begin
     and (c.title like concat('%', strGrade, '%') or strGrade = '')
     and c.statId = 1;
 end;
-
-    -- WHERE 
-    -- -- (a.candidateClearanceId = intId OR intId = 0) AND
-    --  (b.title LIKE CONCAT('%', strPosition, '%') OR strPosition = '')
-    -- AND b.statId = 1    
-    -- AND (c.title LIKE CONCAT('%', strGrade, '%') OR strGrade = '')
-    -- AND c.statId = 1;
     

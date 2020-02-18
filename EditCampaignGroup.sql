@@ -22,7 +22,8 @@ begin
         set title = strTitle,
             details = strDetails,
             schoolYearId = intSchoolYearId,
-            modifiedById = intModifiedById
+            modifiedById = intModifiedById,
+            modifiedOn = now()
         where campaignGroupId = intId 
         and statId = 1;
     end if;

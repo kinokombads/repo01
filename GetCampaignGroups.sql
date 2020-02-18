@@ -26,7 +26,7 @@ begin
     left join users d on a.ModifiedById = d.UserId
 
     where (a.CampaignGroupId = intId or intId = 0)
-    and (a.Title like concat('%', strTitle, '%') or strLastName = '')
+    and (a.Title like concat('%', strTitle, '%') or strTitle = '')
     and (a.SchoolYearId = intSchoolYearId or intSchoolYearId = 0)
     and a.StatId = 1;
 end;
