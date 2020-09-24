@@ -7,10 +7,13 @@ create procedure GetStudents(
     in strLastName varchar(100),
     in strFirstName varchar(100),
     in strMiddleName varchar(100),
-    in strSectionName varchar(100),
-    in strGradeName varchar(100),
-    in intSchoolYearId int,
-    in strCurrentSectionName varchar(100)
+    in intGradeAndSectionId int,
+    in strCurrentSectionName varchar(100),
+    in intGradeId int,
+    in strGradeName varchar(100),    
+    in intSectionId int,    
+    in strSectionName varchar(100),    
+    in intSchoolYearId int
 )
 begin
     select
@@ -34,13 +37,20 @@ begin
         left join grades d on b.gradeId = d.gradeId
         left join schoolyears e on a.schoolYearId = e.schoolYearId
     where (a.studentId = intId or intId = 0)
-    and (a.lrn like concat('%', strLrn, '%') or strLrn = '')
+    and (a.lrn = strLrn or strLrn = '')
     and (a.lastName like concat('%', strLastName, '%') or strLastName = '')
     and (a.firstName like concat('%', strFirstName, '%') or strFirstName = '')
     and (a.middleName like concat('%', strMiddleName, '%') or strMiddleName = '')
+
+    and (b.gradeAndSectionId = intGradeAndSectionId or intGradeAndSectionId = 0)
     and (b.title like concat('%', strCurrentSectionName, '%') or strCurrentSectionName = '')
+
+    and (b.sectionId = intSectionId or intSectionId = 0)
     and (c.title like concat('%', strSectionName, '%') or strSectionName = '')
+
+    and (b.gradeId = intGradeId or intGradeId = 0)
     and (d.title like concat('%', strGradeName, '%') or strGradeName = '')
+
     and (a.schoolYearId = intSchoolYearId or intSchoolYearId = 0)
     and a.statId = 1
     order by d.title, c.title, a.lastname, a.firstname;
